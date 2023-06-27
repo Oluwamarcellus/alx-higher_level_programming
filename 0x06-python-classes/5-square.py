@@ -28,9 +28,11 @@ class Square:
         return self.__size * self.__size
 
     def my_print(self):
-        if self.__size == 0:
+        siz = self.__size
+        if siz == 0:
             print()
         else:
-            list(map(lambda x: list(map(lambda x: 
-                print("#", end=("" if x != self.__size - 1 else "\n"))
-                , range(self.__size))), range(self.__size)))
+            for i in range(siz):
+                for i in range(siz):
+                    print("#", end="")
+                print()
