@@ -31,4 +31,6 @@ class Square:
         if self.__size == 0:
             print()
         else:
-            list(map(lambda x: list(map(lambda x: print("#", end=("" if x != self.__size - 1 else "\n")), range(self.__size))), range(self.__size)))
+            list(map(lambda x: list(map(lambda x: 
+                print("#", end=("" if x != self.__size - 1 else "\n"))
+                , range(self.__size))), range(self.__size)))
