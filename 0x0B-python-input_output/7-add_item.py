@@ -10,16 +10,13 @@ then save them to a file
 import sys
 
 
-save = __import__("5-save_to_json_file").save_to_json_file
-load = __import__("6-load_from_json_file").load_from_json_file
+if __name__ == "__main__":
+    save = __import__("5-save_to_json_file").save_to_json_file
+    load = __import__("6-load_from_json_file").load_from_json_file
 
-
-my_list = [i for i in sys.argv[1:]]
-
-
-try:
-    my_set = load("add_item.json")
-except Exception:
-    my_list = my_list
-
-save(my_list, "add_item.json")
+    try:
+        my_set = load("add_item.json")
+    except Exception:
+        my_set = []
+    my_set = my_set + sys.argv[1:]
+    save(my_set, "add_item.json")
