@@ -30,5 +30,5 @@ class Student:
 
         a = attrs
         if a and type(a) is list and all([type(i) is str for i in a]):
-            return {x: self.__dict__[x] for x in self.__dict__ if x in a}
+            return {x: getattr(self, x) for x in a if x in self.__dict__}
         return self.__dict__
