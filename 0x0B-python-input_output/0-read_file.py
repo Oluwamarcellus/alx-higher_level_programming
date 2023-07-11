@@ -13,4 +13,4 @@ def read_file(filename=""):
 
     with open(filename, encoding="utf-8") as f:
         st = f.read()
-        print(st.strip("\n"))
+        print(st, end="")
