@@ -29,6 +29,6 @@ class Student:
         """
 
         a = attrs
-        if a and type(a) is list and a[0] and type(a[0]) is str:
+        if a and type(a) is list and all([type(i) is str for i in a]):
             return {x: self.__dict__[x] for x in self.__dict__ if x in a}
         return self.__dict__
