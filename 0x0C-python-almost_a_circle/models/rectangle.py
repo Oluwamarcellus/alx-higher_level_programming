@@ -172,3 +172,16 @@ class Rectangle(Base):
                     self.validate(key, value)
                     st = "_Rectangle__" + key
                     setattr(self, st, value)
+
+    def to_dictionary(self):
+        """
+        returns the dictionary representation of the object
+        """
+
+        return {
+                "id": self.id,
+                "width": self.width,
+                "height": self.height,
+                "x": self.x,
+                "y": self.y
+                }
