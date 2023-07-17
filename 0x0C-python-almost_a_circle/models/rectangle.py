@@ -3,7 +3,7 @@
 Rectangle module
 """
 
-
+import sys
 from models.base import Base
 
 
@@ -104,3 +104,33 @@ class Rectangle(Base):
                 raise ValueError("{} must be >= 0".format(attr))
         elif val <= 0:
             raise ValueError("{} must be > 0".format(attr))
+
+    def area(self):
+        """
+        Returns the area value of the Rectangle
+        """
+
+        return self.__height * self.__width
+
+    def display(self):
+        """
+        prints in stdout the Rectangle instance with the character #
+        """
+
+        for _ in range(self.__height):
+            for _ in range(self.__width):
+                print("#", end="", file=sys.stdout)
+            print()
+
+    def __str__(self):
+        """
+        returns the string representation of the Rectangle
+        [Rectangle] (<id>) <x>/<y> - <width>/<height>
+        """
+
+        h = self.__height
+        w = self.__width
+        x = self.__x
+        y = self.__y
+        id_ = self.id
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(id_, x, y, w, h)
