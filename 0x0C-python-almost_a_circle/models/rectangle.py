@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 """
-models/rectangle module
-
-
+Rectangle module
 """
 
 
@@ -19,16 +17,16 @@ class Rectangle(Base):
         initialization
         """
 
-        super().__init__(id)
         self.width = width
         self.height = height
         self.x = x
         self.y = y
+        super().__init__(id)
 
     @property
     def width(self):
         """
-        width attr getter function
+        get width
         """
 
         return self.__width
@@ -36,15 +34,16 @@ class Rectangle(Base):
     @width.setter
     def width(self, value):
         """
-        width attr setter function
+        set width
         """
 
+        self.validate("width", value)
         self.__width = value
 
     @property
     def height(self):
         """
-        the getter function of height
+        get height
         """
 
         return self.__height
@@ -52,15 +51,16 @@ class Rectangle(Base):
     @height.setter
     def height(self, value):
         """
-        height setter funct for height
+        set height
         """
 
+        self.validate("height", value)
         self.__height = value
 
     @property
     def x(self):
         """
-        x getter function
+        get x
         """
 
         return self.__x
@@ -68,15 +68,16 @@ class Rectangle(Base):
     @x.setter
     def x(self, value):
         """
-        x setter function
+        set x
         """
 
+        self.validate("x", value)
         self.__x = value
 
     @property
     def y(self):
         """
-        y getter function
+        get y
         """
 
         return self.__y
@@ -84,7 +85,22 @@ class Rectangle(Base):
     @y.setter
     def y(self, value):
         """
-        y setter function
+        set y
         """
 
+        self.validate("y", value)
         self.__y = value
+
+    @staticmethod
+    def validate(attr, val):
+        """
+        setters attribute value validator
+        """
+
+        if type(val) != int:
+            raise TypeError("{} must be an integer".format(attr))
+        if attr == "x" or attr == "y":
+            if val < 0:
+                raise ValueError("{} must be >= 0".format(attr))
+        elif val <= 0:
+            raise ValueError("{} must be > 0".format(attr))
