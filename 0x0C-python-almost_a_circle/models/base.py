@@ -45,4 +45,7 @@ class Base:
 
         c_name = cls.__name__
         with open(c_name + ".json", "w", encoding="utf-8") as f:
-            f.write(cls.to_json_string([i.to_dictionary() for i in list_objs]))
+            if list_objs is None:
+                f.write("[]")
+            else:
+                f.write(Base.to_json_string([i.to_dictionary() for i in list_objs]))
