@@ -82,7 +82,7 @@ class Square(Rectangle):
                 if key == "id":
                     id_v = None if type(value) is not int else value
                     super().__init__(size, size, x, y, id_v)
-                else:
+                elif key in ["x", "y", "size"]:
                     if key == "size":
                         key = "width"
                     self.validate(key, value)
