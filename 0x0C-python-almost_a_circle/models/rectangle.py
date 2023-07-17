@@ -138,3 +138,37 @@ class Rectangle(Base):
         y = self.__y
         id_ = self.id
         return "[Rectangle] ({}) {}/{} - {}/{}".format(id_, x, y, w, h)
+
+    def update(self, *args, **kwargs):
+        """
+        public method that assigns an argument
+        to each attribute:
+            1st argument should be the id attribute
+            2nd argument should be the width attribute
+            3rd argument should be the height attribute
+            4th argument should be the x attribute
+            5th argument should be the y attribute
+        """
+
+        attr = ["id", "width", "height", "x", "y"]
+        args = args
+        kwargs = kwargs
+        if args:
+            for idx, elem in enumerate(args):
+                if idx > 4:
+                    break
+                if idx == 0:
+                    super().__init__(None if type(elem) is not int else elem)
+                else:
+                    self.validate(attr[idx], elem)
+                    st = "_Rectangle__" + attr[idx]
+                    setattr(self, st, elem)
+        else:
+            kw_items = kwargs.items()
+            for key, value in kw_items:
+                if key == "id":
+                    super().__init__(None if type(value) is not int else value)
+                else:
+                    self.validate(key, value)
+                    st = "_Rectangle__" + key
+                    setattr(self, st, value)
