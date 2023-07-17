@@ -88,3 +88,15 @@ class Square(Rectangle):
                     self.validate(key, value)
                     st = "_Rectangle__" + key
                     setattr(self, st, value)
+
+    def to_dictionary(self):
+        """
+        returns the dictionary representation of a Square
+        """
+
+        return {
+                "id": self.id,
+                "size": self.width,
+                "x": self.x,
+                "y": self.y,
+                }
