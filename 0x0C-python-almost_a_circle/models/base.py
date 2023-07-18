@@ -7,6 +7,7 @@ models/base module
 
 
 import json
+import os
 
 
 class Base:
@@ -74,3 +75,16 @@ class Base:
                 new = cls(1)
             new.update(**dictionary)
             return new
+
+    @classmethod
+    def load_from_file(cls):
+        """
+        returns a list of instances
+        """
+
+        f_name = cls.__name__ + ".json"
+        if not os.path.exists(f_name):
+            return []
+        with open(f_name, "r", encoding="utf-8") as f:
+            j_file = Base.from_json_string(f.read())
+            return [cls.create(**i) for i in j_file]

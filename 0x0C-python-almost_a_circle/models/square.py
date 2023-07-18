@@ -84,10 +84,11 @@ class Square(Rectangle):
                     super().__init__(size, size, x, y, id_v)
                 elif key in ["x", "y", "size"]:
                     if key == "size":
-                        key = "width"
-                    self.validate(key, value)
-                    st = "_Rectangle__" + key
-                    setattr(self, st, value)
+                        self.key = value
+                    else:
+                        self.validate(key, value)
+                        st = "_Rectangle__" + key
+                        setattr(self, st, value)
 
     def to_dictionary(self):
         """
