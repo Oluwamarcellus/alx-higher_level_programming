@@ -110,7 +110,7 @@ class Base:
                     writer.writerow(obj.to_dictionary())
 
     @classmethod
-    def load_from_file_csv(cls):
+    def load_to_file_csv(cls):
         """Return a list of classes instantiated from a CSV file.
         Reads from `<cls.__name__>.csv`.
         Returns:
