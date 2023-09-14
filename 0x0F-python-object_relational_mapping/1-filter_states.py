@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-0-select_states module
+1-filter_states module
 
 """
 import MySQLdb
@@ -21,7 +21,11 @@ if __name__ == "__main__":
             db=db_name
             )
     cur = db.cursor()
-    cur.execute("SELECT id, name FROM states ORDER BY states.id ASC")
+    cur.execute(
+            """SELECT id, name FROM states
+            WHERE name LIKE 'N%'
+            ORDER BY states.id ASC"""
+            )
     rows = cur.fetchall()
     for row in rows:
         print(row)
