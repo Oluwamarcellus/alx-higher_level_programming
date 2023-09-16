@@ -1,18 +1,15 @@
 #!/usr/bin/python3
-"""
-1-filter_states module
-
-"""
+"""1-filter_states module """
 import MySQLdb
 import sys
 
 
-argv = sys.argv[1:]
-username = argv[0]
-password = argv[1]
-db_name = argv[2]
-
 if __name__ == "__main__":
+    argv = sys.argv[1:]
+    username = argv[0]
+    password = argv[1]
+    db_name = argv[2]
+
     db = MySQLdb.connect(
             host="localhost",
             port=3306,
