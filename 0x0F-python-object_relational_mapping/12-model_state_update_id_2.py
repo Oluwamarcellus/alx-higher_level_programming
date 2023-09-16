@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-11-model_state_insert module
+12-model_state_update_id_2 module
 
 """
 from model_state import Base, State
@@ -15,7 +15,8 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
     Base.metadata.create_all(engine)
-    new_state = State(name="Louisiana")
-    session.add(new_state)
-    session.commit()
-    print(new_state.id)
+    state = session.query(State).filter(State.id == 2).first()
+    if state:
+        state.name = "New Mexico"
+        session.add(state)
+        session.commit()
