@@ -4,7 +4,7 @@ relationship_city module
 
 """
 from sqlalchemy import Column, ForeignKey, Integer, String
-from model_state import Base
+from relationship_state import Base
 
 
 class City(Base):

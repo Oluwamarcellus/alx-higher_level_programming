@@ -10,20 +10,18 @@ from relationship_state import State, Base
 from sys import argv
 
 
-
 if __name__ == "__main__":
     conn = "mysql+mysqldb://{}:{}@localhost:3306/{}"
-    engine = create_engine(conn.format(argv[1], argv[2], argv[3]), 
-            pool_pre_ping=True)
+    engine = create_engine(conn.format(argv[1], argv[2], argv[3]))
 
     Base.metadata.create_all(engine)
 
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    new_state = State(name="California")
-    new_city = City(name="San Francisco")
-    new_state.cities.append(new_city)
+    new_state = State(name='California')
     session.add(new_state)
+    session.commit()
+    new_city = City(name='San Francisco', state=new_state)
     session.add(new_city)
     session.commit()
