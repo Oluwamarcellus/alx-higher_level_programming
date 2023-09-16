@@ -7,13 +7,13 @@ import MySQLdb
 import sys
 
 
-argv = sys.argv[1:]
-username = argv[0]
-password = argv[1]
-db_name = argv[2]
-state_name = argv[3]
-
 if __name__ == "__main__":
+    argv = sys.argv[1:]
+    username = argv[0]
+    password = argv[1]
+    db_name = argv[2]
+    state_name = argv[3]
+
     db = MySQLdb.connect(
             host="localhost",
             port=3306,
@@ -22,7 +22,7 @@ if __name__ == "__main__":
             db=db_name
             )
     cur = db.cursor()
-    query = "SELECT * FROM states WHERE name = %s"
+    query = "SELECT * FROM states WHERE name LIKE %s"
     cur.execute(query, (state_name, ))
     rows = cur.fetchall()
     for row in rows:
