@@ -3,7 +3,7 @@
 model_city module
 
 """
-from sqlalchemy import Column, ForeignKey, Integer, String, null
+from sqlalchemy import Column, ForeignKey, Integer, String
 from model_state import Base
 
 
@@ -14,12 +14,6 @@ class City(Base):
 
     __tablename__ = "cities"
 
-    id = Column(
-            "id", Integer, nullable=False,
-            primary_key=True, autoincrement=True
-            )
-    name = Column("name", String(128), nullable=False)
-    state_id = Column(
-            "state_id", Integer, nullable=False,
-            ForeignKey("states.id")
-            )
+    id = Column(Integer, nullable=False, primary_key=True, autoincrement=True)
+    name = Column(String(128), nullable=False)
+    state_id = Column(Integer, ForeignKey('states.id'), nullable=False)
