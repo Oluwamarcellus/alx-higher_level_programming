@@ -9,7 +9,7 @@ import sys
 
 if __name__ == "__main__":
     url = sys.argv[1]
-    res = requests.post(url)
+    res = requests.get(url)
     ecode = res.status_code
     if ecode >= 400:
         print("Error code: {}".format(ecode))
