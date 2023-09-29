@@ -8,17 +8,15 @@ import sys
 
 
 if __name__ == "__main__":
-    param = sys.argv[1] if sys.argv[1] else ""
+    param = sys.argv[1] if len(sys.argv) > 1 else ""
     url = "http://0.0.0.0:5000/search_user"
     param = {"q": param}
     res = requests.post(url, data=param)
-    res = res.json()
-    if (type(res) is dict or type(res) is list):
-        if res:
-            id_ = res["id"]
-            name = res["name"]
-            print("[{}] {}".format(id_, name))
-        else:
+    try:
+        response = res.json()
+        if response == {}:
             print("No result")
-    else:
+        else:
+            print("[{}] {}".format(response.get("id"), response.get("name")))
+    except ValueError:
         print("Not a valid JSON")
