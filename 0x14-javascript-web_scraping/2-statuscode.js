@@ -2,6 +2,6 @@
 
 const argv = process.argv.slice(2);
 const request = require('request');
-request(argv[0], (error, res, body) => {
-  console.log(res.statusCode);
+request.get(argv[0]).on('response', function (response) {
+  console.log(`code: ${response.statusCode}`);
 });
